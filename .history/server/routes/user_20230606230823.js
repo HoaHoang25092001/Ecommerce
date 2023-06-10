@@ -20,7 +20,7 @@ router
 
 router
     .route('/logout')
-    .get(verifyAccessToken, ctrls.logout)
+    .post(ctrls.logout)
 
 module.exports = router
 

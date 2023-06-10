@@ -12,15 +12,7 @@ router
 
 router
     .route('/current')
-    .get(verifyAccessToken, ctrls.getCurrent)
-
-router
-    .route('/refreshtoken')
-    .post(ctrls.refreshAccessToken)
-
-router
-    .route('/logout')
-    .get(verifyAccessToken, ctrls.logout)
+    .post(ctrls.getCurrent)
 
 module.exports = router
 
