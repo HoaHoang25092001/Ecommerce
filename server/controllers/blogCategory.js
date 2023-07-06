@@ -1,16 +1,16 @@
-const ProductCategory = require('../models/productCategory')
+const BlogCategory = require('../models/blogCategory')
 const asyncHandler = require('express-async-handler')
 
 const createCategory = asyncHandler(async (req, res) => {
-    const response = await ProductCategory.create(req.body)
+    const response = await BlogCategory.create(req.body)
     return res.status(200).json({
         status: response ? 'success' : 'error',
-        createdCategory: response ? response : 'Cannot create new product-category'
+        createdCategory: response ? response : 'Cannot create new blog-category'
     })
 })
 
 const getCategories = asyncHandler(async (req, res) => {
-    const response = await ProductCategory.find().select('title _id')
+    const response = await BlogCategory.find().select('title _id')
 
     return res.status(200).json({
         status: response ? 'success' : 'error',
@@ -19,22 +19,22 @@ const getCategories = asyncHandler(async (req, res) => {
 })
 
 const updateCategory = asyncHandler(async (req, res) => {
-    const {pcid} = req.params
-    const response = await ProductCategory.findByIdAndUpdate(pcid, req.body, {new: true})
+    const {bcid} = req.params
+    const response = await BlogCategory.findByIdAndUpdate(bcid, req.body, {new: true})
 
     return res.status(200).json({
         status: response ? 'success' : 'error',
-        data: response ? response : 'Cannot update product-category'
+        data: response ? response : 'Cannot update blog-category'
     })
 })
 
 const deleteCategory = asyncHandler(async (req, res) => {
-    const {pcid} = req.params
-    const response = await ProductCategory.findByIdAndDelete(pcid)
+    const {bcid} = req.params
+    const response = await BlogCategory.findByIdAndDelete(bcid)
 
     return res.status(200).json({
         status: response ? 'success' : 'error',
-        data: response ? response : 'Cannot delete product-category'
+        data: response ? response : 'Cannot delete blog-category'
     })
 })
 module.exports = {
